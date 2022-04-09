@@ -93,7 +93,7 @@ class FusionAuthJwt
         return Cache::remember(
             'fusionauth.public_keys',
             self::JWKS_CACHE_TTL,
-            fn () => Http::get('https://' . Config::get('fusionauth.domain') . '/api/jwt/public-key')
+            fn () => Http::get(Config::get('fusionauth.domain') . '/api/jwt/public-key')
                 ->throw()
                 ->json('publicKeys', [])
         );
